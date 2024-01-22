@@ -6,6 +6,10 @@ require("dotenv").config();
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
+/**
+ * this portion of http server is for the render deployment
+ * as it doesn't without http server
+ */
 http
   .createServer((req, res) => {
     res.writeHead(200, {
@@ -15,6 +19,7 @@ http
     res.end();
   })
   .listen(4000);
+// -------------------------------------
 
 client.commands = new Collection();
 client.cooldowns = new Collection();
