@@ -1,9 +1,20 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
+const http = require("http");
 require("dotenv").config();
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+
+http
+  .createServer((req, res) => {
+    res.writeHead(200, {
+      "Content-type": "text/plain",
+    });
+    res.write("Hey");
+    res.end();
+  })
+  .listen(4000);
 
 client.commands = new Collection();
 client.cooldowns = new Collection();
